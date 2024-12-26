@@ -11,19 +11,38 @@ await page.goto(url)
 
 //await expect(page) 
 
-await page.getByText('Create account' ).click
+//await page.getByText('Create account' ).click
 
-const usernameField = page.locator("//input[@type='text']"); 
- await usernameField.fill('Mani'); 
+const btn = await page.getByText('Create account');
+await btn.click();
 
-await page.locator('First and last name','Manikandan');
+await page.fill("input[autocomplete='name']",'Manikandan')
 
-await page.fill('Mobile number','8940352445');
+await page.fill("input[autocomplete='email']", 'maniaer0577@gmail.com');
 
-await page.fill('At least 6 characters','123456789');
+// await page.waitForTimeout(5000);
 
-await page.getByLabel('auth-continue-announce').click
+const mnth = await page.locator('#SELECTOR_1');
 
+await mnth.selectOption('January');
+
+await page.waitForTimeout(2000);
+
+const day = await page.locator('#SELECTOR_2');
+
+await day.selectOption('20');
+
+await page.waitForTimeout(2000);
+
+const year = await page.locator('#SELECTOR_3');
+
+await year.selectOption('1994');
+
+await page.waitForTimeout(2000);
+
+
+
+// await page.screenshot
 
 
 });
